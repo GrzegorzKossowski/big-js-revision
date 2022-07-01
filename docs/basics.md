@@ -1,145 +1,215 @@
-# Basic
+# Introduction
 
-html5.2 dokumentacja opublikowana w 2017 r.
+JavaScript to język programowania używany do obsługi zachowania stron www
 
--   Html standardowy makup language
--   Html opisuje wygląd strony
--   przekazuje przeglądarce, jak narysować dokument
--   labeluje zawartość tagami formatującymi
+# Where To
 
-Basic html page
+Kod wstawiany jest na stronie za pomocą tagu `<script>`
 
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Page Title</title>
-    </head>
-    <body>
-        <h1>My First Heading</h1>
-        <p>My first paragraph.</p>
-    </body>
-</html>
+```js
+<script>
+    document.getElementById("demo").innerHTML = "My First JavaScript";
+</script>
 ```
 
-```html
-<tag>content</tag> <br />
-- without closing tag
+Skrypty można umieszczać zarówno w nagłówku - headerze, jak i w `<body>` dokumentu. Najlepszym rozwiązaniem jest umieszczanie skryptów na końcu body, bo ich przetwarzanie blokuje proces.
+Jeśli w headerze, to z atrybutem defer, co blokuje przetwarzanie skryptu
+
+```js
+<script src='myScript.js' defer></script>
 ```
 
-Document structure
+Najlepszym rozwiązaniem jest trzymanie kodu w plikach zewnętrznych, co umożliwia keszowanie plików w przeglądarce i pobieranie równoległe.
 
+# Output
+
+Wynik działania JS można eksponować na kilka sposobów
+
+-   Pisanie do elementu poprzez innerHTML.
+-   Pisanie do dokumentu przez document.write() - to może nadpisać cały dokument!
+-   Użycie alertu przez window.alert() - niestosowane. Blokuje stronę.
+-   Pisanie na konsolę przez console.log() - lub -.error().
+-   Drukowanie - widnow.print(), ale tylko bieżącego widoku.
+
+```js
+// podmienia zawartość elementu, np. paragrafu
+document.getElementById('demo').innerHTML = 5 + 6;
+// pisze bezpośrednio na ekran
+document.write(5 + 6);
+// popup z alertem, blokuje stronę
+window.alert(5 + 6);
+alert(5 + 6); // metody window można odwoływać się bezpośrednio
+// klasyczny logger
+console.log(`hello world`);
+console.error(`sth went wrong`);
+// proste drukowanie dokumentu
+window.print();
 ```
-<!DOCTYPE html> - deklaracja dokumentu HTML5
-<html> - root dokumentu
-<head> sekcja meta (title, styles, etc.)
-<body> - widoczna część dokumentu
+
+# Variables
+
+Zmienne są kontenerami zarezerwowanymi w pamięci na dane. Są 4 sposoby na zadeklarowanie zmiennych.
+
+-   **var** - zmienna globalna, używana do 2015 r.
+-   **let** - zmienna zmienna
+-   **const** - zmienna stała po zadeklarowaniu wartości (nie dotyczy obiektów - wtedy jest stałą referencją).
+-   **nothing**
+
+```js
+// deklaracja zmiennych
+let x;
+const y; → ERROR
+// inicjalizacja
+const y = 3;
 ```
 
-## H tags - headers
+zmienna bez wartości jest undefined
 
-`<h1> - <h6> examples`
+```js
+let x; // undefined
+```
 
-<h1>H1 example</h1>
-<h6>H6 example</h6>
+# Let
 
-`<p>` tag paragrafu
+Wprowadzone w 2015 roku
+Nie może być zadeklarowana ponownie.
+Musi być zadeklarowana wartość przed użyciem.
+Scope dotyczy blocku → { let }
+```js
+let x = 2;    // Allowed
+{
+let x = 3;    // Allowed
+}
+{
+let x = 4;    // Allowed
+}
+```
 
-`<a>` tag linku, atrybuty m.in. _href_ - link do innego urla
+Let jest hoistowane do góry, ale nie inicjalizowane, więc wywala error
 
-`<img>` tag obrazka, atrybuty m.in. _src_ - link do obrazka
+Var jest hoistowane z globalnym zasięgiem, więc można zadeklarować potem
 
-# Elements
+# Const
 
-Element jest zestawem tag, atrybut, zawartość
+- Wprowadzone w 2015 r.
+- Nie może być deklarowana ponownie.
+- Nie mogą być przypisane ponownie (const - stałe)
+- Dotyczą bloku → { const }
 
-`<tagname>Content goes here...</tagname>`
+Musi być zadeklarowana i zainicjalizowana. Deklaruje się stałą referencję a nie wartość. Pozwala na zmiany w obiektach (array itp).
 
-Elementy mogą być zagnieżdżane
+```const PI = 3.14159265359;```
 
-# Attributes
+Zmienne const są hoistowane i mogą być deklarowane po inicjalizacji, w obrębie scope’u.
 
-Elementy mają atrybuty w pierwszym tagu. Występują w formacie klucz=”wartość”
+# Operators
 
-Przykładowe atrybuty:
+https://www.w3schools.com/js/js_operators.asp
 
--   href link url dla a
--   src źródło obrazu dla img, width wysokość obrazka img, alt zastępczy tekst dla obrazka
--   style używany do dodawania styli na poziomie tagu
--   lang atrybut wskazujący język strony
--   title definiuje popup danego elementu, komentarz, opis po najechaniu myszą
+# Arithmetic
 
-# Headings
+# Assignment
 
-`<h1> - <h6> przykłady`
+# Data Types
 
-<h1>H1 example</h1>
-<h6>H6 example</h6>
+# Functions
 
-`<h>` tag
-Tagi nagłówków (header) zawierają sie w przedziale `<h1>` do `<h6>` malejąco w rozmiarze czcionki. Służą do strukturyzowania ważności treści. Nie mogą zastępować boldowania. Wykorzystywane przez silniki wyszukiwarek do pozycjonowania treści zawartości.
+# Objects
 
-Nagłówki mają defaultowe style, ale można je stylować wedle uznania.
-`<h1 style="font-size:60px;">Heading 1</h1>`
+# Events
 
-# Paragraphs
+# Strings
 
-https://www.w3schools.com/html/html_paragraphs.asp
+# String Methods
 
-# Styles
+# String Search
 
-# Formatting
+# String Templates
 
-# Quotations
+# Numbers
 
-# Comments
+# Number Methods
 
-# Colors
+# Arrays
 
-# CSS
+# Array Methods
 
-# Links
+# Array Sort
 
-# Images
+# Array Iteration
 
-# Favicon
+# Array Const
 
-# Tables
+# Dates
 
-# Lists
+# Date Formats
 
-# Block & Inline
+# Date Get Methods
+
+# Date Set Methods
+
+# Math
+
+# Random
+
+# Booleans
+
+# Comparisons
+
+# If Else
+
+# Switch
+
+# Loop For
+
+# Loop For In
+
+# Loop For Of
+
+# Loop While
+
+# Break
+
+# Iterables
+
+# Sets
+
+# Maps
+
+# Typeof
+
+# Type Conversion
+
+# Bitwise
+
+# RegExp
+
+# Errors
+
+# Scope
+
+# Hoisting
+
+# Strict Mode
+
+# this Keyword
+
+# Arrow Function
 
 # Classes
 
-# Id
+# Modules
 
-# Iframes
+# #ON
 
-# JavaScript
-
-# File Paths
-
-# Head
-
-# Layout
-
-# Responsive
-
-# Computercode
-
-# Semantics
+# Debugging
 
 # Style Guide
 
-# Entities
+# Best Practices
 
-# Symbols
+# Mistakes
 
-# Emojis
+# Performance
 
-# Charset
-
-# URL Encode
-
-# HTML vs. X#
+# Reserved Words
