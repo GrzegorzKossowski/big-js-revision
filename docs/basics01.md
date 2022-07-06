@@ -249,6 +249,41 @@ Przykładowe eventy
 
 `<button onclick="this.innerHTML = Date()">The time is?</button>`
 
+## Event with name
+
+```js
+const event = new Event('eventName')
+element.addEventListener('eventName' function(e) {}, false)
+
+// trigger
+element.dispatchEvent(event)
+```
+
+## Custom event
+
+```js
+// create custom events
+const catFound = new CustomEvent('animalfound', {
+    detail: {
+        name: 'cat',
+    },
+});
+const dogFound = new CustomEvent('animalfound', {
+    detail: {
+        name: 'dog',
+    },
+});
+
+// add an appropriate event listener
+obj.addEventListener('animalfound', e => console.log(e.detail.name));
+
+// dispatch the events
+obj.dispatchEvent(catFound);
+obj.dispatchEvent(dogFound);
+
+// "cat" and "dog" logged in the console
+```
+
 # Strings
 
 Stringi służą do przechowywania tekstu. Można je tworzyć jako prymitywy `let x = "string"` (preferowane - string pool??? - sprawdzić!!!) lub jako obiekty `let x = new String('string')`
@@ -685,17 +720,222 @@ const shuffled = arr
 
 # Array Iteration
 
-https://www.w3schools.com/js/js_array_iteration.asp
+Metody iteracyjne operują na wszystkich elementach tablicy.
+
+## forEach()
+
+Iteruje po każdym elemencie wywołując podaną funkcję. Nie zwraca nic, nie zmienia tablicy.
+
+`array.forEach((value, index, array) => {...})`
+
+## map()
+
+Tworzy nowy array wykonując podaną metodę na każdym elemencie.
+
+`array.map((value, index, array) => {...})`
+
+## filter()
+
+Tworzy nową tablicę z elementów, które spełniają warunek
+
+`arr.filter((value, index, array) => { condition })`
+
+## reduce()
+
+Wykonuje operację na każdym elemencie, by ostatecznie zwrócić jeden wynik.
+
+`array.reduce((total, value, index, array) => {...})`
+
+## every()
+
+Sprawdza, czy wszystkie elementy spełniają warunek (wszystko, albo nic). Dowolna nieścisłość przerywa funkcję i zwraca false 
+
+``array.every(( value, index, array) => { condition })``
+
+## some()
+
+Sprawdza, czy jakiś element spełniaj warunek (którykolwiek).
+
+
+``array.some(( value, index, array) => { condition })``
+
+## indexOf(), lastIndexOF()
+
+Wyszukuje pozycję index pierwszego wystąpienia elementu
+
+`array.indexOf(item, start)`
+
+Wyszukuje pozycję index ostatniego wystąpienia elementu
+
+`array.lastIndexOf(item, start)`
+
+## find()
+
+Zwraca pierwszy element tablicy, który spełnia warunek podanej funkcji testującej.
+
+`array.find(element => { condition });`
+
+## reduceRight()
+
+Podobna do reduce, tylko wykonywana od prawej strony tablicy. Wykonuje operację na każdym elemencie, by ostatecznie zwrócić jeden wynik.
+
+`array.reduceRight((total, value, index, array) => {...})`
+
+## Array.from()
+
+Metoda klasy. Podobna do map? Tworzy tablicę z elementu iterowalnego. Wykonuje na nim podaną funkcję.
+
+`Array.from([1, 2, 3], x => x + x); // [2, 4, 6]`
+
+Generowanie ciągu cyfr:
+
+`Array.from({length: 10}, (_, i) => i + 1); // [1, 2, 3, ..., 10]`
+
+## includes()
+
+Sprawdza, czy tablica zawiera wartość.
+
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.includes("Mango"); // is true
+```
+
 
 # Array Const
 
+Słowo kluczowe `const`, określające "stałą" zmienną blokuje możliwość jej nadpisania (w odróżnieniu od `let`). Wprzypadku obiektów - jest to jednak referencja, co umożliwia zmianę zawartości (Object, Array).
+
+UWAGA: nie dotyczy to stringów, również tworzonych przez new String() - leci error.
+
 # Dates
+
+`const d = new Date();`
+
+Defaultowo js korzysta z daty przeglądarki, lokalizacji i języka. Obiekt daty jest statycznym snapszotem daty w momencie jej pobrania.
+
+Datę można wygenerować na 4 sposoby
+
+```js
+new Date()
+new Date(milliseconds)
+new Date(date string)
+new Date(year, month, day, hours, minutes, seconds, milliseconds)
+```
+
+Uwaga, miesiące liczone są od 0 do 11. 12 zwróci kolejny rok, podobnie dni.
+
+Minimalna liczba argumentów to dwa. Jeden jest traktowany jako milisekundy!
+
+```js
+const d = new Date(2018); // Thu Jan 01 1970 ...
+const d = new Date(2018, 3); // Sun Apr 01 2018 ...
+```
+
+## `Era linuxa`
+
+**Zero time is January 01, 1970 00:00:00 UTC.**
+
 
 # Date Formats
 
+## default
+
+Podstawowy, defaultowy format daty w JS
+
+`Wed Jul 06 2022 11:18:26 GMT+0200 (czas środkowoeuropejski letni)`
+
+## ISO
+
+Daty mogą być podawane jako stringi w formacie ISO (YYYY-MM-DD) lub (YYYY-MM-DDTHH:MM:SSZ)
+
+```js
+const d = new Date("2015-03-25");
+const d = new Date("2015-03");
+const d = new Date("2015");
+const d = new Date("2015-03-25T12:00:00Z");
+```
+Z jest oznaczeniem czasu UTC. Usunięcie Z pozwala na dodawanie lub usuwanie czasu (+/-HH:MM)
+
+Dopuszczalne są także inne formaty (long).
+
+```js
+const d = new Date("03/25/2015");
+const d = new Date("2015-03-25");
+const d = new Date("Mar 25 2015");
+const d = new Date("25 Mar 2015"); // dzień i miesiąc mogą być zamiennie
+
+```
+
+## parsowanie daty do milisekund
+
+`let msec = Date.parse("March 21, 2012");`
+
+
 # Date Get Methods
 
+Wybrane metody pobierania daty.
+
+`Date.now()`	Aktualny czas ECMA5
+
+`getFullYear()` -	pełny rok jako numer (yyyy)
+
+`getMonth()` -	miesiąc jako numer (0-11)
+
+`getDate()` -	dzień jako numer (1-31)
+
+`getDay()` -	dzień tygodnia jako numer (0-6, 0 = Sunday, niedziela)
+
+`getHours()` -	godzina (0-23)
+
+`getMinutes()` -	minuta (0-59)
+
+`getSeconds()` -	sekunda (0-59)
+
+`getMilliseconds()` -	millisekunda (0-999)
+
+`getTime()` -	czas w milisekundach od ery linuxa
+
+Metody mają swoje wersje UTC (Greenwich). Polska znajduje się w strefach czasowych:
+
+UTC+01:00 (czas środkowoeuropejski (CET), w okresie zimowym) oraz
+UTC+02:00 (czas środkowoeuropejski letni (CEST), w okresie letnim).
+
 # Date Set Methods
+
+Metody set pozwalają na ustawienie obiektu czasu, np.
+
+```js
+const d = new Date();
+d.setFullYear(2020);
+```
+
+`setTime()` -	Set the time (milliseconds since January 1, 1970)
+
+`setFullYear()` -	ustawia rok (opcjonalnie miesiąc i dzień)
+
+`setMonth()` -	ustawia miesiąc (0-11)
+
+`setDate()` -	ustawia dzień (1-31)
+
+`setHours()` -	ustawia godzine (0-23)
+
+`setMinutes()` -	ustawia minuty (0-59)
+
+`setSeconds()` -	ustawia sekundy (0-59)
+
+`setMilliseconds()` -	ustawia millisekundy (0-999)
+
+# Compare dates
+
+Daty można porównywać między sobą.
+
+```js
+const today = new Date();
+const someday = new Date();
+someday.setFullYear(2100, 0, 14);
+
+if (someday > today) {...}
+```
 
 <a href='../README.md' style='border: 1px solid gold; padding: 5px; color: gold'>← back to README.md</a>
 <a href='#top' style='border: 1px solid gold; padding: 5px; color: gold'>↑ back to top</a>
