@@ -628,7 +628,14 @@ fruits.copyWithin(2, 0, 2); // → Banana,Orange,Banana,Orange,Kiwi,Papaya
 
 ## map
 
-`map()` - tworzy nową tablicę z elementów spełniających warunek rzesłany w metodzie
+`map()` - tworzy nową tablicę zawierającą wyniki wywoływania podanej funkcji dla każdego elementu wywołującej tablicy.
+
+```js
+const doubles = numbers.map(function(x) {
+    return x * 2;
+});
+```
+
 
 ## reduce
 
