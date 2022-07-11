@@ -14,7 +14,11 @@ Tutorial | HOME | Introduction | Where To | Output | Statements | Syntax | Comme
 
 Math | Random | Booleans | Comparisons | If Else | Switch | Loop For | Loop For In | Loop For Of | Loop While | Break | Iterables | Sets | Maps | Typeof | Type Conversion | Bitwise | RegExp | Errors | Scope | Hoisting | Strict Mode | this Keyword | Arrow Function | Classes | Modules | JSON | Debugging | Style Guide | Best Practices | Mistakes | Performance | Reserved Words
 
-<a href="./docs/modules.md">Modules...</a> (from https://javascript.info/modules)
+<a href="./docs/errors.md">Errors...</a> (from https://javascript.info/error-handling)
+
+Error handling, "try...catch" | Custom errors, extending Error
+
+<a href="./docs/promises.md">Promises...</a> (from https://javascript.info/async)
 
 Introduction: callbacks | Promise | Promises chaining | Error handling with promises | Promise API | Promisification | Microtasks | Async/await
 
