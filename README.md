@@ -1,4 +1,5 @@
 # big-js-revision
+
 BIG JavaScript, the world's most popular programming language repetition
 
 MDN
@@ -13,6 +14,9 @@ Tutorial | HOME | Introduction | Where To | Output | Statements | Syntax | Comme
 
 Math | Random | Booleans | Comparisons | If Else | Switch | Loop For | Loop For In | Loop For Of | Loop While | Break | Iterables | Sets | Maps | Typeof | Type Conversion | Bitwise | RegExp | Errors | Scope | Hoisting | Strict Mode | this Keyword | Arrow Function | Classes | Modules | JSON | Debugging | Style Guide | Best Practices | Mistakes | Performance | Reserved Words
 
+<a href="./docs/modules.md">Modules...</a> (from https://javascript.info/modules)
+
+Introduction: callbacks | Promise | Promises chaining | Error handling with promises | Promise API | Promisification | Microtasks | Async/await
 
 <a href="./docs/modules.md">Modules...</a> (from https://javascript.info/modules)
 
@@ -21,6 +25,5 @@ Modules, introduction | Export and Import | Dynamic imports
 <a href="./docs/misc.md">Miscellaneous...</a> (from https://javascript.info/js-misc)
 
 Proxy and Reflect | Eval: run a code string | Currying | Reference Type | BigInt
-
 
 <a href="./docs/link.md">more...</a>
