@@ -14,6 +14,10 @@ Tutorial | HOME | Introduction | Where To | Output | Statements | Syntax | Comme
 
 Math | Random | Booleans | Comparisons | If Else | Switch | Loop For | Loop For In | Loop For Of | Loop While | Break | Iterables | Sets | Maps | Typeof | Type Conversion | Bitwise | RegExp | Errors | Scope | Hoisting | Strict Mode | this Keyword | Arrow Function | Classes | Modules | JSON | Debugging | Style Guide | Best Practices | Mistakes | Performance | Reserved Words
 
+<a href="./docs/classes.md">Classes...</a> (from https://javascript.info/classes)
+
+Class basic syntax | Class inheritance | Static properties and methods | Private and protected properties and methods | Extending built-in classes | Class checking: "instanceof" | Mixins
+
 <a href="./docs/errors.md">Errors...</a> (from https://javascript.info/error-handling)
 
 Error handling, "try...catch" | Custom errors, extending Error
