@@ -1,0 +1,40 @@
+# Network requests
+
+## Cookies
+
+Cookies są elementem protokołu HTTP. Ustawiane są przez browser.
+Składają sie z par klucz=wartość; oddzielonych `;`.
+
+serwer → client => `Set-Cookie`
+client → server => `Cookie`
+
+`document.cookie` słuzy do ustawiania danego cookie. Nie nadpisuje istniejących, tylko ten o danym kluczu.
+
+W przypadku cookie zawierającego rózne znaki, należy je zakodować.
+
+```js
+document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+console.log(document.cookie); // ...; my%20name=John%20Smith
+```
+
+UWAGA: Cookie nie powinno przekraczć 4KB, ogólna ilość cookie na domenę to ok 20 sztuk (zależnie od browsera).
+
+Cookie mogą mieć ustawione opcje, które są dość istotne, np.
+
+`path=/somepath` - pozwala na ustawienie ścieżki pod którą dane cookie jest widoczne, np. `path=/admin` jest widoczne dla adresu /admin/..., ale nie dla /home
+
+`domain=site.com` - domena dostępności cookie. Defaultowo jest dostępne dla domeny, która go tworzy. Ustawienie jej w cookie pozwala na dostep dla kolejnych poziomów, np. forum.site.com (normalnie niewidoczne).
+
+`expires, max-age` - pozwalają ustalić czas życia cookie (defaultowo session tylko).
+```js
+let date = new Date(Date.now() + 100000)
+date = date.toUTCString()
+document.cookie = "user=John; expires="+date;
+```
+max-age - pozwala na bezpośrednie podanie czasu w sekundach.
+
+`secure` - cookie może być przesłane tylko przez https.
+
+---
+
+# CDN...
